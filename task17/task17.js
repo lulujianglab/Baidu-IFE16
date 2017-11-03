@@ -79,7 +79,7 @@ function renderChart() {
 
     var html = "";//循环外声明
     for (var x in graData) {
-        html += module.replace('{width}', graData[x]['width']).replace('{height}', graData[x]['height']).replace('{color}', graData[x]['color'])
+        html += module.replace('{width}', graData[x]['width']).replace('{height}', graData[x]['height']).replace('{color}', graData[x]['color']).replace('{title}',graData[x]['title']).replace('{data}', graData[x]['data']).replace('{date}',graData[x]['date']);//调用replace()方法动态设置浏览器元素为数据组里的数据
     }
 
     chart_wrap.innerHTML = html;
