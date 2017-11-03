@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>IFE JavaScript Task 18</title>
+        <style type="text/css">
+             li {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                background-color: red;
+                color: #fff;
+                margin: 0 10px;
+                line-height: 50px;
+                padding: 10px;
+                overflow: auto;
+            }
+
+            li:hover {
+                cursor: pointer;
+            }
+
+            ul {
+                padding-left: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <input type="text" placeholder="请输入数字" id="num">
+            <input type="button" id="leftIn" value="左侧入">
+            <input type="button" id="rightIn" value="右侧入">
+            <input type="button" id="leftOut" value="左侧出">
+            <input type="button" id="rightOut" value="外侧出">
+        </div>
+        <ul id="content"></ul>
+
+        <script type="text/javascript">
+            var txt = document.getElementById('num');
+            console.log(txt);
+            var content = document.getElementById('content');
+
+            document.getElementById("num").addEventListener('blur',function(){
+                if (!txt.value.match(/^[0-9]*$/)) {
+                    alert("请输入数字！");
+                    txt.value = "";
+                }
+            },false)
+
+            document.getElementById('leftIn').addEventListener('click',function(){
+                if (txt.value == "" || txt.value == null) {return false}
+                var newItem = document.createElement("li");
+                var textnode = document.createTextNode(txt.value);
+                newItem.appendChild(textnode);
+
+                content.insertBefore(newItem, content.childNodes[0]);
+            },false)
+
+            document.getElementById('rightIn').addEventListener('click',function(){
+                if (txt.value == "" || txt.value == null) {return false}   
+                var newItem = document.createElement("li");
+                var textnode = document.createTextNode(txt.value);
+                newItem.appendChild(textnode);
+
+                content.appendChild(newItem);
+            },false)
+
+            document.getElementById('leftOut').addEventListener('click',function(){
+                if(content.childNodes.length == 0){
+                    alert("还没数字请先输入！");
+                    return false;
+                }
+                var start = content.firstChild.innerHTML;
+                content.removeChild(content.firstChild);
+                alert('删除最左侧节点'+start);
+            },false)
+
+            document.getElementById('rightOut').addEventListener('click',function(){
+                if(content.childNodes.length == 0){
+                    alert("还没数字请先输入！");
+                    return false;
+                }
+                // var end = content.childNodes[content.childNodes.length - 1].innerHTML;
+                var end = content.lastChild.innerHTML;
+                content.removeChild(content.lastChild);
+                // content.removeChild(content.childNodes[content.childNodes.length - 1]);
+                alert('删除最右侧节点'+end);
+            },false)
+
+            content.addEventListener('click',function(e){
+                content.removeChild(e.target);
+            },false)
+        </script>
+
+    </body>
+
+</html>
