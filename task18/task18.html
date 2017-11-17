@@ -38,9 +38,9 @@
 
         <script type="text/javascript">
             var txt = document.getElementById('num');
-            console.log(txt);
             var content = document.getElementById('content');
 
+            // blur() 方法用于从链接上移开焦点
             document.getElementById("num").addEventListener('blur',function(){
                 if (!txt.value.match(/^[0-9]*$/)) {
                     alert("请输入数字！");
