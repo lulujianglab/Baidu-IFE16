@@ -35,7 +35,7 @@ function inputRightIn() {
     var liNum = content.childNodes.length;
     if (value != false) {
         if (liNum < 60) {           
-            var newItem = document.createElement("li");S           
+            var newItem = document.createElement("li");   
             var textnode = document.createTextNode(value);
             newItem.appendChild(textnode);
             // 插入之后直接用appendChild
@@ -144,5 +144,5 @@ document.getElementById('sortData').addEventListener("click", function() {
     }
 }, false);
 document.getElementById('randomData').addEventListener("click", randomNum, false)
-// 更新页面用location.reload()
+// 更新页面用location.reload
 document.getElementById('update').addEventListener('click', function() { location.reload(); }, false)
