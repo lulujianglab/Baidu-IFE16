@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>IFE JavaScript Task 21</title>
+        <style type="text/css">
+            body {
+                width: 50%;
+                margin: 0 auto
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+            }
+
+            li {
+                display: inline-block;
+                background-color: rgba(255, 0, 0, 0.5);
+                margin: 2px 2px;
+                border-radius: 15px;
+                padding: 7px;
+                color: #fff;
+                transition: all 1s
+            }
+
+            li:hover {
+                cursor: pointer;
+            }
+
+            ul {
+                padding: 10px 0;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-align-items: flex-end;
+                -ms-flex-align: end;
+                align-items: flex-end;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+
+            input {
+                border: 1px #ff0000 solid;
+                background-color: #fff;
+                border-radius: 15px;
+                padding: 20px;
+                cursor: pointer;
+                transition: all 0.5s;
+                margin: 10px 0
+            }
+            
+            input:hover {
+                background-color: rgba(255, 0, 0, 0.5);
+                transition: all 0.5s;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div>
+            <label for="tagInput">Tag:</label>
+            <input type="text" id="tagInput" placeholder="回车/逗号/空格均可完成创建" onkeyup="addInput(event)">
+      
+            <ul id="contentTag"></ul>
+       
+            <textarea placeholder="批量输入多个内容，格式可以为数字、中文、英文等，可以通过用回车，逗号（全角半角均可），顿号，空格（全角半角、Tab等均可）等符号作为不同内容的间隔。" id="interestInput" cols="100" rows="5"></textarea>
+            <input type="button" value="确认兴趣爱好" id="confirBtn">
+        
+            <ul id="contentInterest"></ul>
+            <input type="button" value="重置" id="resetBtn">
+        </div>
+
+        <script type="text/javascript">
+            var tag_txt = document.getElementById('tagInput')
+            var interest_txt = document.getElementById('interestInput')
+            var tag_content = document.getElementById('contentTag')
+            var interest_content = document.getElementById('contentInterest')
+
+            // 添加tag
+            var tag_arr = []
+            function addInput(event) {
+
+                //ie/chrome : event是一个内置全局对象,代表事件的状态，例如触发event对象的元素、鼠标的位置及状态、按下的键等等
+                // 获取有效的事件对象：更好的兼容IE浏览器和非ie浏览器，在ie浏览器中,window.event是全局变量,在非ie中，就需要自己传入一个参数来获取event啦，所以就有了var e = e||window.event
+                var e = e || event
+
+                // charAt() 方法可返回指定位置的字符
+                var lastChar = tag_txt.value.charAt(tag_txt.value.length - 1)
+
+                if ((e.keyCode==13) || (e.keyCode==32) || (lastChar==",") || (lastChar=="，")) {
+                    var value = tag_txt.value
+                    // tag_arr数组暂用于存放所有输入的tag value，方便下一步数组的去重处理
+                    tag_arr.push(value)
+                    tag_txt.value = ""
+                    tag_content.innerHTML = ""
+                    //数组去重
+                    tag_arr = tag_arr.unique()
+
+                    function addTag() {
+                        for (var i = 0; i < tag_arr.length; i++) {
+                            // 消除逗号输入后逗号遗留的bug
+                            if (tag_arr[i].charAt(tag_arr[i].length-1).toString() == ",") {
+                                tag_arr[i] = tag_arr[i].slice(0,tag_arr[i].length = 1)
+                            }
+
+                            if (tag_arr[i] != false) {//防止输入框为空
+                                var newItem = document.createElement("li")
+                                var textNode = document.createTextNode(tag_arr[i])
+
+                                newItem.appendChild(textNode)
+                                tag_content.appendChild(newItem)
+                                newItem.setAttribute('title', tag_arr[i])
+                                newItem.setAttribute('onmouseover','showDelInfo()') //添加hover效果
+                                newItem.setAttribute('onmouseout','hideDelInfo()') //添加hover效果                               
+                                tag_content.childNodes[i].addEventListener('click',remove,false)
+                            }
+                        }
+
+                        // 获取li节点个数，不能超过10个 
+                        var tagLiNum = tag_content.childNodes
+                        if (tagLiNum.length > 10) {//超过10个就删除最前面的li
+                            deleteOld(tag_content)
+                        }
+                    }
+                    addTag()
+
+                    // 超过10个li之后更新li
+                    var tag_content_li = tag_content.getElementsByTagName("li")
+                    var temp_arr = []
+                    for (var i = 0; i < tag_content_li.length; i++) {
+                        temp_arr.push(tag_content_li[i].innerHTML)
+                        // 重新去重后的数组覆盖之前的tag_arr
+                        tag_arr = temp_arr.unique()
+                    }
+                    tag_content.innerHTML = ""
+                    addTag()
+                }
+            }
+
+            // 添加兴趣爱好
+            function addInterest() {  
+                // value 正则过滤作用域
+                for (var i = 0; i < value.length; i++) {
+                    if (value != false) { //防止输入框为空
+                        var newItem = document.createElement("li")
+                        var textNode = document.createTextNode(value[i])
+
+                        newItem.appendChild(textNode)
+                        interest_content.appendChild(newItem)
+                        newItem.setAttribute('title', value[i])
+                        newItem.setAttribute('onmouseover','showDelInfo()')
+                        newItem.setAttribute('onmouseout','hideDelInfo()')
+                        interest_txt.value = ""
+
+                        interest_content.childNodes[i].addEventListener('click',remove,false)
+                    }
+                }
+                var interestLiNum = interest_content.childNodes
+                if (interestLiNum.length > 10) {
+                    deleteOld(interest_content)
+                }
+            }
+
+            // 正则过滤 兴趣爱好
+            function getRegExp() {
+                function getValue() {
+                    var inputTxt = trim(interest_txt.value)
+                    //将回车，逗号，顿号，空格替换为空格，并转换为数组value
+                    value = inputTxt.replace(/[^\d\u4e00-\u9fa5a-zA-Z]+/g," ").split(" ").unique()
+                    if (value[0] !== "") {
+                        addInterest()
+                        var interest_content_li = interest_content.getElementsByTagName("li")
+                        var tempArr = []
+                        // 超过10个li之后更新数组
+                        for (var i = 0; i < interest_content_li.length; i++) {
+                            tempArr.push(interest_content_li[i].innerHTML)
+                            value = tempArr.unique()
+                        }
+                        interest_content.innerHTML = ""
+                        addInterest()
+                    } else {
+                        alert("请先输入内容")
+                        return false
+                    }
+                }
+                getValue()
+            }
+            
+            // 去掉数组中重复的项
+            Array.prototype.unique = function() {
+                var temp = []
+                for (var i = 0; i < this.length; i++) {
+                    if (temp.indexOf(this[i]) == -1) {
+                        temp.push(this[i])
+                    }
+                }
+                return temp
+            }
+            
+            // hover效果
+            function showDelInfo(e) {
+                var e = e || window.event
+                e.target.style.backgroundColor = "rgba(0, 255, 0, 0.5)"
+                e.target.innerHTML = "点击删除" + e.target.innerHTML
+            }
+
+            function hideDelInfo(e) {
+                var e = e || window.event
+                e.target.style.backgroundColor = "rgba(255, 0, 0, 0.5)"
+                e.target.innerHTML = e.target.innerHTML.slice(4,e.target.innerHTML.length)
+            }
+            
+            // ul li添加点击删除事件
+            var remove = function(e) {
+                var e = e || window.event
+                e.target.parentNode.removeChild(e.target)
+            }
+            
+            // 删除最左端，最早的tag li
+            function deleteOld(e) {
+                e.removeChild(e.childNodes[0])
+                console.log("delete success",e.childNodes[0])
+            }
+
+            // trim删除左右两端的空格
+            function trim(str) {
+                var regexl = /^\s*/
+                var regexr = /\s*$/
+                return (str.replace(regexl,"")).replace(regexr,"")
+            }
+
+            // 重置清空函数
+            function reset() {
+                tag_content.innerHTML = ""
+                tag_txt.value = ""
+                interest_txt.value = ""
+                interest_content.innerHTML = ""
+            }
+
+            document.getElementById('confirBtn').addEventListener('click',getRegExp,false)
+            document.getElementById('resetBtn').addEventListener('click',reset,false)
+        </script>
+    </body>
+</html>
