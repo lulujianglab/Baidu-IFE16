@@ -50,31 +50,32 @@
             <div>
                 <label for="name">名称</label>
                 <input type="text" id="name" />
-                <p id="hintName">必填，长度为4~16个字符</p>
+                <p>必填，长度为4~16个字符</p>
             </div>
             <div>
                 <label for="password">密码</label>
                 <input type="password" id="password" />
-                <p id="hintPassword">请输入密码</p>
+                <p>请输入密码</p>
             </div>
             <div>
                 <label for="passconfirm">密码确认</label>
-                <input type="password" id="passconfirm">
-                <p id="hintPassconfirm">再次输入相同的密码</p>
+                <input type="password" id="passconfirm" />
+                <p>再次输入相同的密码</p>
             </div>
             <div>
                 <label for="email">邮箱</label>
-                <input for="email" id="email">
-                <p id="hintEmail">输入您的邮箱</p>
+                <input for="email" id="email" />
+                <p>输入您的邮箱</p>
             </div>
             <div>
                 <label for="tel">手机</label>
-                <input for="text" id="tel">
-                <p id="hintTel">输入您的手机号</p>
+                <input for="text" id="tel" />
+                <p>输入您的手机号</p>
 
                 <input type="submit" id="submit" value="提交" />
             </div>
         </form>
+
         <script type="text/javascript">
             var nameInfo = document.getElementById('name')
             var passwordInfo = document.getElementById('password')
@@ -98,9 +99,10 @@
 
             // 获取焦点和失去焦点
             (function showHint(){
-                for (var i=0, j=document.getElementsByTagName("input"); i < j.length; i++) {
+                for (var i=0,j=document.getElementsByTagName("input"); i < j.length; i++) {
                     j[i].addEventListener('focus',function(){//表单获取焦点时获得提示
                         // 下一个兄弟元素节点
+                        console.log(this.nextElementSibling)
                         this.nextElementSibling.style.display = "block"
                     },false)
                     j[i].addEventListener('blur',function(){//表单失去焦点时，显示验证结果
@@ -114,101 +116,104 @@
 
             // 验证账号
             var validateName = function() {
-                if (nameInfo.value == "") {//验证是否为空
-                    nameInfo.nextElementSibling.innerHTML = "必填，长度为4~16个字符"
-                    nameInfo.nextElementSibling.style.color = "#BBB"
-                    nameInfo.style.border = "1px solid #888"
-                    return
-                } else if (getLength(nameInfo.value) < 4 || getLength(nameInfo.value) > 16) {//验证长度是否符合标准
-                    nameInfo.nextElementSibling.innerHTML = "长度只能为4~16个字符"
-                    nameInfo.nextElementSibling.style.color = "#f00"
-                    nameInfo.style.border = "2px solid #f00"
-                    return
+                if (nameInfo.value == "") { //验证是否为空
+                    nameInfo.nextElementSibling.innerHTML = "必填，长度为4~16个字符";
+                    nameInfo.nextElementSibling.style.color = "#BBB";
+                    nameInfo.style.border = "1px solid #888";
+                    return;
+                } else if (getLength(nameInfo.value) < 4 || getLength(nameInfo.value) > 16) { //验证长度是否符合标准
+                    nameInfo.nextElementSibling.innerHTML = "长度只能为为4~16个字符";
+                    nameInfo.nextElementSibling.style.color = "#f00";
+                    nameInfo.style.border = "2px solid #f00";
+                    return;
                 } else {
-                    nameInfo.nextElementSibling,innerHTML = "名称格式正确"
-                    nameInfo.nextElementSibling,style.color = "#0f0"
-                    nameInfo.style.border = "2px solid #0f0"
-                    return nameInfo.value
+                    nameInfo.nextElementSibling.innerHTML = "名称格式正确";
+                    nameInfo.nextElementSibling.style.color = "#0f0";
+                    nameInfo.style.border = "2px solid #0f0";
+                    return nameInfo.value;
                 }
             }
+    
 
             // 验证密码
-            var validatePassword = function() {
-                if (passwordInfo.value != "") {
-                    passwordInfo.nextElementSibling.innerHTML = "密码可用"
-                    passwordInfo.nextElementSibling.style.color = "#0f0"
+            var validatePassword = function(){
+                if(passwordInfo.value!=""){
+                    passwordInfo.nextElementSibling.innerHTML = "密码可用";
+                    passwordInfo.nextElementSibling.style.color = "#0f0";
                     passwordInfo.style.border = "2px solid #0f0"
-                } else {
+                }else{
                     passwordInfo.nextElementSibling.innerHTML = "请输入密码";
                     passwordInfo.nextElementSibling.style.color = "#BBBBBB";
                     passwordInfo.style.border = "1px solid #888";
                 }
-                if (passconfirmInfo.value != "") {
-                    if (passconfirmInfo.value === passwordInfo.value) {
-                        passconfirmInfo.nextElementSibling.innerHTML = "密码输入一致"
-                        passconfirmInfo.nextElementSibling.style.color = "#0f0"
-                        passconfirmInfo.style.border = "2px solid #0f0"
-                    } else {
+                if(passconfirmInfo.value!=""){
+                    if(passwordInfo.value === passconfirmInfo.value){
+                        passconfirmInfo.nextElementSibling.innerHTML = "密码输入一致";
+                        passconfirmInfo.nextElementSibling.style.color = "#0f0";
+                        passconfirmInfo.style.border = "2px solid #0f0";
+                    }else{
                         passconfirmInfo.nextElementSibling.innerHTML = "密码输入不一致";
                         passconfirmInfo.nextElementSibling.style.color = "#f00";
                         passconfirmInfo.style.border = "2px solid #f00";
                     }
-                } else {
+                }else{
                     passconfirmInfo.nextElementSibling.innerHTML = "再次输入相同的密码";
                     passconfirmInfo.nextElementSibling.style.color = "#bbb";
                     passconfirmInfo.style.border = "1px solid #888";
                 }
+               
             }
 
             // 验证邮箱
-            var validateEmail = function () {
-                if (emailInfo.value != "") {
-                    var filter = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/
-                    if (filter.test(emailInfo.value)) {
-                        emailInfo.nextElementSibling.innerHTML = "邮箱格式正确"
-                        emailInfo.nextElementSibling.style.color = "#0f0"
-                        emailInfo.style.border = "2px solid #0f0"
-                    } else {
+            var validateEmail = function(){
+                if(emailInfo.value!=""){
+                    var filter = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/;
+                    if(filter.test(emailInfo.value)){
+                        emailInfo.nextElementSibling.innerHTML = "邮箱格式正确";
+                        emailInfo.nextElementSibling.style.color = "#0f0";
+                        emailInfo.style.border = "2px solid #0f0";
+                    }else{
                         emailInfo.nextElementSibling.innerHTML = "邮箱格式错误";
                         emailInfo.nextElementSibling.style.color = "#f00";
                         emailInfo.style.border = "2px solid #f00";
                     }
-                } else {
+                }else{
                     emailInfo.nextElementSibling.innerHTML = "输入您的邮箱";
                     emailInfo.nextElementSibling.style.color = "#BBB";
                     emailInfo.style.border = "1px solid #888";
                 }
             }
+    
             
             // 验证手机号码
-            var validatePhone = function () {
-                if (telInfo.value != "") {
-                    var filter = /^1[3|4|5|8][0-9]\d{8}$/i
-                    if (filter.test(telInfo.value)) {
-                        telInfo.nextElementSibling.innerHTML = "手机格式正确"
-                        telInfo.nextElementSibling.style.color = "#0f0"
-                        telInfo.style.border = "2px solid #0f0"
-                    } else {
+            var validatePhone = function(){
+                if(telInfo.value != ""){
+                    var filter = /^1[3|4|5|8][0-9]\d{8}$/i;
+                    if(filter.test(telInfo.value)){
+                        telInfo.nextElementSibling.innerHTML = "手机格式正确";
+                        telInfo.nextElementSibling.style.color = "#0f0";
+                        telInfo.style.border = "2px solid #0f0";
+                    }else{
                         telInfo.nextElementSibling.innerHTML = "手机格式错误";
                         telInfo.nextElementSibling.style.color = "#f00";
                         telInfo.style.border = "2px solid #f00";
                     }
-                } else {
-                        telInfo.nextElementSibling.innerHTML = "输入您的手机号码";
-                        telInfo.nextElementSibling.style.color = "#BBB";
-                        telInfo.style.border = "1px solid #888";
+                }else{
+                    telInfo.nextElementSibling.innerHTML = "输入您的手机号码";
+                    telInfo.nextElementSibling.style.color = "#BBB";
+                    telInfo.style.border = "1px solid #888";
                 }
             }
 
             var validateAll = function () {
-                if (telInfo.nextElementSibling.style.color == "rgb(0, 255, 0)" && emailInfo.nextElementSibling.style.color == "rgb(0, 255,0)" && passwordInfo.nextElementSibling.style.color == "rgb(0, 255, 0)" && passconfirmInfo.nextElementSibling.style.color == "rgb(0, 255, 0)" && nameInfo.nextElementSibling.style.color == "rgb(0, 255, 0)") {
+                if (telInfo.nextElementSibling.style.color == "rgb(0, 255, 0)" && emailInfo.nextElementSibling.style.color == "rgb(0, 255, 0)" && passwordInfo.nextElementSibling.style.color == "rgb(0, 255, 0)" && nameInfo.nextElementSibling.style.color == "rgb(0, 255, 0)") {
                     alert("提交成功！")
                 } else {
                     alert("提交失败，请正确填写。")
                 }
             }
 
-            document.getElementById('submit').addEventListener('click',validateAll,false)
+            document.getElementById("submit").addEventListener("click",validateAll,false)
         </script>
     </body>
 </html>
