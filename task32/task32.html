@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IFE JavaScript Task 32</title>
+        <style type="text/css">
+            p {
+                font-family: "Microsoft Yahei";
+                font-size: .8rem;
+                display: inline-block;
+                color: #888;
+            }
+
+            p[class="rules"] {
+                color: #888;
+            }
+
+            input[class="rules"] {
+                border: 1px solid #888;
+            }
+
+            p[class="success"] {
+                color: #0f0;
+            }
+
+            input[class="success"] {
+                border: 2px solid #0f0;
+            }
+
+            p[class="fail"] {
+                color: #f00;
+            }
+
+            input[class="fail"] {
+                border: 2px solid #f00;
+            }
+
+            div {
+                margin: auto;
+            }
+
+            .factory {
+                border: 5px solid gray;
+                margin: 40px 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="checkbox" id="name" checked disabled=true/>
+        <label for="name">账号</label>
+        <input type="checkbox" id="password" checked disabled=true/>
+        <label for="password">密码</label>
+        <input type="checkbox" id="password_confirm" checked disabled=true/>
+        <label for="password_confirm">确认密码</label>
+        <input type="checkbox" id="email" />
+        <label for="email">邮箱</label>
+        <input type="checkbox" id="phone" />
+        <label for="phone">手机号码</label>
+        <input type="button" id="create" value="创建表单" />
+        <input type="button" id="reset" value="重置" />
+        
+        <form id="form"></form>
+        <!-- <div id="content">
+            <div id="content_true">
+                <label for="name">名称<input type="text" id="name" /></label>
+                <p>必填，长度为4~16个字符</p>
+                <br>
+                <label for="password">密码<input type="password" id="password" /></label>
+                <p>请输入密码</p>
+                <br>
+                <label for="password_confirm">确认密码<input type="password" id="password_confirm" /></label>
+                <p>再次输入相同的密码</p>
+            </div>
+            <div id="content_email">           
+                <label for="email">邮箱<input type="email" id="email" /></label>
+                <p>输入您的邮箱</p>
+            </div> 
+            <div id="content_phone">
+                <label for="phone">手机号码<input type="text" id="phone" />
+                <p>输入您的手机号</p>
+                </label>
+            </div>
+        </div> -->
+        <script type="text/javascript" src="task32.js"></script>
+    </body>
+</html>

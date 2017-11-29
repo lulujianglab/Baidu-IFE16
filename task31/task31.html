@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IFE JavaScript Task 31</title>
+        <style type="text/css">
+            #schoolList {
+                display: inline-block;
+            }
+            #hunan {
+                display: none;
+            }
+            #social_group {
+                display: none;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div>
+            <label><input type="radio" name="student[]" value="internal" id="internal" checked>在校生</label>
+            <label><input type="radio" name="student[]" value="social" id="social">非在校生</label>
+        </div>
+        <div>
+            <div id="internal_group">
+                <label for="city">学校</label>
+                <select name="city[]" id="city">
+                    <option value="beijing">北京</option>
+                    <option value="hunan">湖南</option>
+                </select>
+                <div id="schoolList">
+                    <select name="school[]" id="beijing">
+                        <option value="中国传媒大学">中国传媒大学</option>
+                        <option value="北京大学">北京大学</option>
+                    </select>
+                    <select name="school[]" id="hunan">
+                        <option value="湖南商学院">湖南商学院</option>
+                        <option value="湖南大学">湖南大学</option>
+                    </select>
+                </div> 
+            </div>
+            <div id="social_group">
+                <label for="company">就业单位</label>
+                <select name="company[]" id="company">
+                    <option value="百度">百度</option>
+                    <option value="新浪">新浪</option>
+                </select>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var internal = document.getElementById('internal')
+            var social = document.getElementById('social')
+            var city = document.getElementById('city')
+
+            // radio
+            var checkRadio = function() {
+                var idName = this.getAttribute('id') 
+                if (idName == 'internal') {
+                    internal_group.style.display = "block"
+                    social_group.style.display = "none"
+                } else if (idName == 'social') {
+                    internal_group.style.display = "none"
+                    social_group.style.display = "block"
+                }
+            }
+
+            // select
+            var checkSchool = function() {
+                var index = this.selectedIndex //返回select中被选选项的索引号
+                var cityName = this.options[index].value
+                var schoolList = document.getElementById('schoolList').getElementsByTagName('select')
+                for (var i = 0; i < schoolList.length; i++) { //将所有学校select隐藏
+                    schoolList[i].style.display = "none"
+                }
+                document.getElementById(cityName).style.display = "block"
+            }
+
+            // 绑定事件
+            internal.addEventListener('change',checkRadio,false)
+            social.addEventListener('change',checkRadio,false)
+            city.addEventListener('change',checkSchool,false)
+
+        </script>
+    </body>
+</html>
