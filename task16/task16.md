@@ -107,3 +107,5 @@ task.js
      html引入外部文件时记得放入body中。因为放在head中的JS代码会在页面加载完成之前就读取，而放在body中的JS代码，会在整个页面加载完成之后读取。所以当我们想定义一个全局对象，而这个对象是页面中的某个按钮时，我们必须将其放入body中，道理很明显：如果放入head，那当你定义的时候，那个按钮都没有被加载，可能获得的是一个undefind。
      
      JS放在head和放在body中的区别：http://blog.csdn.net/lumeier/article/details/46398009
+     
+    childNodes和getElementsByTagName一样，获得的是数组，访问的时候记得添加[]
