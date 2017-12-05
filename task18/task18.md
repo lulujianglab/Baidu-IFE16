@@ -15,4 +15,10 @@
                 点击"右侧出"，读取并删除队列又侧第一个元素，并弹窗显示元素中数值；
                 点击队列中任何一个元素，则该元素会被从队列中删除
         
-知识点：获取输入框的值时最好不要直接在定义变量时赋值，如var txt = document.getElementById('num').value；如果初始化时没有定义value的值，那么后续程序会出现bug。
+Notes：
+
+        获取输入框的值时最好不要直接在定义变量时赋值，如var txt = document.getElementById('num').value；如果初始化时没有定义value的值，那么后续程序会出现bug。
+        
+        insertBefore()方法、appendChild()方法
+        
+        首先创建元素（createElement()）,再创建文本节点（createTextNode()）,再调用元素的插入功能把文本节点插入。
