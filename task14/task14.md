@@ -48,3 +48,8 @@
         </script>
         </body>
         </html>
+
+
+notes:
+
+    array数组排序的方法,sort()
