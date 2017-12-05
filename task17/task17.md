@@ -167,3 +167,10 @@ task.js
         }
 
         init();
+
+
+notes:
+
+        js文件引入造成document.getElement的方法取得null值而报错，最好将js放到</body>前面
+        
+        对象的replace方法很关键
