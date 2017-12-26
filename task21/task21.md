@@ -1,9 +1,9 @@
-任务目的
+# 任务目的
 
         学习与实践JavaScript的基本语法、语言特性
         练习使用JavaScript实现拖拽功能
         
-任务描述
+# 任务描述
 
         基于任务20，将任务20的代码进行抽象、封装，然后在此基础上实现如图中的两个需求：Tag输入和兴趣爱好输入
         如示例图上方，实现一个tag输入框
@@ -19,7 +19,7 @@
         每个爱好内容需要做trim处理
         最多允许10个兴趣爱好，多于10个时，按照录入的先后顺序，把最前面的删掉
 
-notes
+## notes
 
        监控回车onkeydown,用户按下任意键时触发,回车的keyCode是13，空格是32，逗号是188。但是逗号用188来监控有小BUG，会遗留逗号在表格里（重置输入框的时间太慢，放到插入子节点之前重置输入框就好）
        
@@ -30,4 +30,4 @@ notes
             return (str.replace(regex1, "")).replace(regex2, "");
         }
 
-[结果图](https://lulujianglab.github.io/IFE16/task21/)
+## [结果图](https://lulujianglab.github.io/IFE16/task21/)
