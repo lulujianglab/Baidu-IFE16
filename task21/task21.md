@@ -29,3 +29,5 @@ notes
             var regex2 = /\s*$/;
             return (str.replace(regex1, "")).replace(regex2, "");
         }
+
+[结果图](https://lulujianglab.github.io/IFE16/task21/)
