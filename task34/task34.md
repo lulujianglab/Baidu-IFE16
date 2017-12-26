@@ -1,9 +1,9 @@
-任务目的
+# 任务目的
 
         练习JavaScript在DOM、字符串处理相关知识
         练习对于复杂UI，如何进行数据机构建模
         
-任务描述
+# 任务描述
 
         对于正方形的移动增加相应动画，包括移动和旋转
         每个指令的执行时间是1s（可以自己调整）
@@ -17,6 +17,8 @@
         MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格
         MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格
 
-notes
+## notes
 
         两种调用setTimeout和setInterval都接收两个参数，第一个是函数或字符串。
+
+[结果图](https://lulujianglab.github.io/IFE16/task34/)
