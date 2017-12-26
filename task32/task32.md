@@ -1,10 +1,10 @@
-任务目的
+# 任务目的
 
         加强对JavaScript的掌握
         熟悉常用表单处理逻辑
         学习如何模块如何设计，不同模块间如何尽量解耦
         
-任务描述
+# 任务描述
 
         实现以JavaScript对象的方式定义表单及验证规则
 
@@ -16,8 +16,9 @@
 
         使用你制作的表单工厂，在一个页面上创建两套样式不同的表单
 
-notes
+## notes
 
        主要考察面向对象编程和模块化。
        用checkbox的checked属性，被选中会返回true。
        
+## [结果图](https://lulujianglab.github.io/IFE16/task32/)
