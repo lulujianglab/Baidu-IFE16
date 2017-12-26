@@ -1,9 +1,9 @@
-任务目的
+# 任务目的
 
         加强对JavaScript的掌握
         熟悉常用表单处理逻辑
-        
-任务描述
+        
+# 任务描述
 
         如示例图
         http://7xrp04.com1.z0.glb.clouddn.com/task_2_29_1.jpg
@@ -13,6 +13,8 @@
                 2.每个英文字母、数字、英文符号长度为1
                 3.每个汉字，中文符号长度为2
 
-notes
+## notes
 
         用到了JS的charCodeAt()方法，可以返回指定位置的字符的Unicode编码，根据返回的编码分开计算英文与非英文的字符长度，与charAt()方法有区别。
+
+## [结果图](https://lulujianglab.github.io/IFE16/task29/)
