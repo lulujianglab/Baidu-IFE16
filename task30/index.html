@@ -117,20 +117,20 @@
             // 验证账号
             var validateName = function() {
                 if (nameInfo.value == "") { //验证是否为空
-                    nameInfo.nextElementSibling.innerHTML = "必填，长度为4~16个字符";
-                    nameInfo.nextElementSibling.style.color = "#BBB";
-                    nameInfo.style.border = "1px solid #888";
+                    nameInfo.nextElementSibling.innerHTML = "必填，长度为4~16个字符"
+                    nameInfo.nextElementSibling.style.color = "#BBB"
+                    nameInfo.style.border = "1px solid #888"
                     return;
                 } else if (getLength(nameInfo.value) < 4 || getLength(nameInfo.value) > 16) { //验证长度是否符合标准
-                    nameInfo.nextElementSibling.innerHTML = "长度只能为为4~16个字符";
-                    nameInfo.nextElementSibling.style.color = "#f00";
-                    nameInfo.style.border = "2px solid #f00";
+                    nameInfo.nextElementSibling.innerHTML = "长度只能为为4~16个字符"
+                    nameInfo.nextElementSibling.style.color = "#f00"
+                    nameInfo.style.border = "2px solid #f00"
                     return;
                 } else {
-                    nameInfo.nextElementSibling.innerHTML = "名称格式正确";
-                    nameInfo.nextElementSibling.style.color = "#0f0";
-                    nameInfo.style.border = "2px solid #0f0";
-                    return nameInfo.value;
+                    nameInfo.nextElementSibling.innerHTML = "名称格式正确"
+                    nameInfo.nextElementSibling.style.color = "#0f0"
+                    nameInfo.style.border = "2px solid #0f0"
+                    return nameInfo.value
                 }
             }
     
@@ -138,28 +138,28 @@
             // 验证密码
             var validatePassword = function(){
                 if(passwordInfo.value!=""){
-                    passwordInfo.nextElementSibling.innerHTML = "密码可用";
-                    passwordInfo.nextElementSibling.style.color = "#0f0";
+                    passwordInfo.nextElementSibling.innerHTML = "密码可用"
+                    passwordInfo.nextElementSibling.style.color = "#0f0"
                     passwordInfo.style.border = "2px solid #0f0"
                 }else{
-                    passwordInfo.nextElementSibling.innerHTML = "请输入密码";
-                    passwordInfo.nextElementSibling.style.color = "#BBBBBB";
-                    passwordInfo.style.border = "1px solid #888";
+                    passwordInfo.nextElementSibling.innerHTML = "请输入密码"
+                    passwordInfo.nextElementSibling.style.color = "#BBBBBB"
+                    passwordInfo.style.border = "1px solid #888"
                 }
                 if(passconfirmInfo.value!=""){
                     if(passwordInfo.value === passconfirmInfo.value){
-                        passconfirmInfo.nextElementSibling.innerHTML = "密码输入一致";
-                        passconfirmInfo.nextElementSibling.style.color = "#0f0";
-                        passconfirmInfo.style.border = "2px solid #0f0";
+                        passconfirmInfo.nextElementSibling.innerHTML = "密码输入一致"
+                        passconfirmInfo.nextElementSibling.style.color = "#0f0"
+                        passconfirmInfo.style.border = "2px solid #0f0"
                     }else{
-                        passconfirmInfo.nextElementSibling.innerHTML = "密码输入不一致";
-                        passconfirmInfo.nextElementSibling.style.color = "#f00";
-                        passconfirmInfo.style.border = "2px solid #f00";
+                        passconfirmInfo.nextElementSibling.innerHTML = "密码输入不一致"
+                        passconfirmInfo.nextElementSibling.style.color = "#f00"
+                        passconfirmInfo.style.border = "2px solid #f00"
                     }
                 }else{
-                    passconfirmInfo.nextElementSibling.innerHTML = "再次输入相同的密码";
-                    passconfirmInfo.nextElementSibling.style.color = "#bbb";
-                    passconfirmInfo.style.border = "1px solid #888";
+                    passconfirmInfo.nextElementSibling.innerHTML = "再次输入相同的密码"
+                    passconfirmInfo.nextElementSibling.style.color = "#bbb"
+                    passconfirmInfo.style.border = "1px solid #888"
                 }
                
             }
@@ -167,41 +167,40 @@
             // 验证邮箱
             var validateEmail = function(){
                 if(emailInfo.value!=""){
-                    var filter = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/;
+                    var filter = /^[a-z0-9]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/
                     if(filter.test(emailInfo.value)){
-                        emailInfo.nextElementSibling.innerHTML = "邮箱格式正确";
-                        emailInfo.nextElementSibling.style.color = "#0f0";
-                        emailInfo.style.border = "2px solid #0f0";
+                        emailInfo.nextElementSibling.innerHTML = "邮箱格式正确"
+                        emailInfo.nextElementSibling.style.color = "#0f0"
+                        emailInfo.style.border = "2px solid #0f0"
                     }else{
-                        emailInfo.nextElementSibling.innerHTML = "邮箱格式错误";
-                        emailInfo.nextElementSibling.style.color = "#f00";
-                        emailInfo.style.border = "2px solid #f00";
+                        emailInfo.nextElementSibling.innerHTML = "邮箱格式错误"
+                        emailInfo.nextElementSibling.style.color = "#f00"
+                        emailInfo.style.border = "2px solid #f00"
                     }
                 }else{
-                    emailInfo.nextElementSibling.innerHTML = "输入您的邮箱";
-                    emailInfo.nextElementSibling.style.color = "#BBB";
-                    emailInfo.style.border = "1px solid #888";
+                    emailInfo.nextElementSibling.innerHTML = "输入您的邮箱"
+                    emailInfo.nextElementSibling.style.color = "#BBB"
+                    emailInfo.style.border = "1px solid #888"
                 }
             }
     
-            
             // 验证手机号码
             var validatePhone = function(){
                 if(telInfo.value != ""){
-                    var filter = /^1[3|4|5|8][0-9]\d{8}$/i;
+                    var filter = /^1[3|4|5|8][0-9]\d{8}$/i
                     if(filter.test(telInfo.value)){
-                        telInfo.nextElementSibling.innerHTML = "手机格式正确";
-                        telInfo.nextElementSibling.style.color = "#0f0";
-                        telInfo.style.border = "2px solid #0f0";
+                        telInfo.nextElementSibling.innerHTML = "手机格式正确"
+                        telInfo.nextElementSibling.style.color = "#0f0"
+                        telInfo.style.border = "2px solid #0f0"
                     }else{
-                        telInfo.nextElementSibling.innerHTML = "手机格式错误";
-                        telInfo.nextElementSibling.style.color = "#f00";
-                        telInfo.style.border = "2px solid #f00";
+                        telInfo.nextElementSibling.innerHTML = "手机格式错误"
+                        telInfo.nextElementSibling.style.color = "#f00"
+                        telInfo.style.border = "2px solid #f00"
                     }
                 }else{
-                    telInfo.nextElementSibling.innerHTML = "输入您的手机号码";
-                    telInfo.nextElementSibling.style.color = "#BBB";
-                    telInfo.style.border = "1px solid #888";
+                    telInfo.nextElementSibling.innerHTML = "输入您的手机号码"
+                    telInfo.nextElementSibling.style.color = "#BBB"
+                    telInfo.style.border = "1px solid #888"
                 }
             }
 
