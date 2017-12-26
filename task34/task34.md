@@ -21,4 +21,4 @@
 
         两种调用setTimeout和setInterval都接收两个参数，第一个是函数或字符串。
 
-[结果图](https://lulujianglab.github.io/IFE16/task34/)
+## [结果图](https://lulujianglab.github.io/IFE16/task34/)
